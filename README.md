@@ -1,6 +1,11 @@
-# tek5-fs
-The file server for tek5, an emulation of the 667 revision
+# RS2 File Server
 
-# Created by Greg
+A stand-alone server for distributing rs2 cache files.
 
-You can find the original code and post here: [RS2 Kotlin JS5 File Server](https://www.rune-server.ee/runescape-development/rs-503-client-and-server/downloads/697286-kotlin-js5-file-server.html)
+## Quick guide
+
+Download the latest [released jar](../../releases/) and [file-server.properties](./file-server.properties) into the same directory.
+
+Update `file-server.properties` with your own values, including cache directory and rsa keys.
+
+> You can remove the `prefetchKeys` property to auto generate them on start-up.
