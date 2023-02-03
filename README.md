@@ -12,5 +12,7 @@ Update `file-server.properties` with your own values, including cache directory 
 
 ## Building
 
-To build the project, run `./gradlew build` and you'll find a jar under `build/libs`.  
-You can also load this project in your IDE of choice and build using a gradle task.
+To build the project, run `./gradlew build` and you'll find a jar called `rs2-file-server.jar` inside `build/libs`.  
+You can also load this project in your IDE of choice and build using a gradle task.  
+
+To quickly get up and started you may also run `./gradlew run` which will run it without making a jar.
