@@ -1,18 +1,25 @@
-# RS2 File Server
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/1067274729205010463/1082144752985702451/2011scapelogo.png" />
+  <br>
+  <br>
+  <br>
+  <img src="https://cdn.discordapp.com/attachments/1067274729205010463/1082147221509787690/image.png" />
+  <br>
+</p>
 
-A stand-alone server for distributing rs2 cache files.
+# File Server
 
-## Quick guide
+This repository hosts the file server files, which is what the client requires when downloading assets. This file-server can be run in the background and left online for eternity, provided you have made no changes to the cache. The current iteration of this file server targets revision 667.
 
-Download the latest [released jar](../../releases/) and [file-server.properties](./file-server.properties) into the same directory.
+# Quick Links
 
-Update `file-server.properties` with your own values, including cache directory and rsa keys.
+<b>2011Scape Related<b>
+- [Game Repository](https://github.com/2011Scape/game)
+- [File Server Repository](https://github.com/2011Scape/file-server)
+- [Client Repository](https://github.com/2011Scape/rs-client)
+- [Installation Guide](https://github.com/2011Scape/installation-guide)
 
-> You can remove the `prefetchKeys` property to auto generate them on start-up.
-
-## Building
-
-To build the project, run `./gradlew build` and you'll find a jar called `rs2-file-server.jar` inside `build/libs`.  
-You can also load this project in your IDE of choice and build using a gradle task.  
-
-To quickly get up and started you may also run `./gradlew run` which will run it without making a jar.
+<b>Extras</b>
+- [OpenRS2 Archive](https://archive.openrs2.org/)
+- [Lost City, 2004 Emulator](https://discord.gg/hN3tHUmZEN)
+- [2009Scape, 2009 Emulator](https://2009scape.org)
