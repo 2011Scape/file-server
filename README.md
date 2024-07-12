@@ -16,7 +16,7 @@ This repository hosts the file server files, which is what the client requires w
 <b>2011Scape Related<b>
 - [Game Repository](https://github.com/2011Scape/game)
 - [File Server Repository](https://github.com/2011Scape/file-server)
-- [Client Repository](https://github.com/2011Scape/rs-client)
+- [Client Repository](https://github.com/2011Scape/runetek5-client)
 - [Installation Guide](https://github.com/2011Scape/installation-guide)
 
 <b>Extras</b>

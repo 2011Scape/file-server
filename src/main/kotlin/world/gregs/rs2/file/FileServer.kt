@@ -6,14 +6,18 @@ import kotlin.math.min
 
 class FileServer(
     private val provider: DataProvider,
-    private val versionTable: ByteArray
+    private val versionTable: ByteArray,
 ) {
     private val logger = InlineLogger()
 
     /**
      * Fulfills a request by sending the requested files data to the requester
      */
-    suspend fun fulfill(read: ByteReadChannel, write: ByteWriteChannel, prefetch: Boolean) {
+    suspend fun fulfill(
+        read: ByteReadChannel,
+        write: ByteWriteChannel,
+        prefetch: Boolean,
+    ) {
         val value = read.readUMedium()
         val index = value shr 16
         val archive = value and 0xffff
@@ -24,7 +28,10 @@ class FileServer(
     /**
      * @return data for an [index]'s [archive] file or [versionTable] when index and archive are both 255
      */
-    fun data(index: Int, archive: Int): ByteArray? {
+    fun data(
+        index: Int,
+        archive: Int,
+    ): ByteArray? {
         if (index == 255 && archive == 255) {
             return versionTable
         }
@@ -34,7 +41,13 @@ class FileServer(
     /**
      * Writes response header followed by the contents of [data] to [write]
      */
-    suspend fun serve(write: ByteWriteChannel, index: Int, archive: Int, data: ByteArray, prefetch: Boolean) {
+    suspend fun serve(
+        write: ByteWriteChannel,
+        index: Int,
+        archive: Int,
+        data: ByteArray,
+        prefetch: Boolean,
+    ) {
         val compression = data[0].toInt()
         val size = getInt(data[1], data[2], data[3], data[4]) + if (compression != 0) 8 else 4
         logger.trace { "Serving file $index $archive - $size." }
@@ -47,7 +60,14 @@ class FileServer(
     /**
      * Writes [source] [offset] [size] to [write] and starting at [headerSize] inserting a [SEPARATOR] every [split] bytes
      */
-    suspend fun serve(write: ByteWriteChannel, headerSize: Int, source: ByteArray, offset: Int, size: Int, split: Int) {
+    suspend fun serve(
+        write: ByteWriteChannel,
+        headerSize: Int,
+        source: ByteArray,
+        offset: Int,
+        size: Int,
+        split: Int,
+    ) {
         var length = min(size, split - headerSize)
         write.writeFully(source, offset, length)
         var written = length
@@ -61,8 +81,12 @@ class FileServer(
     }
 
     companion object {
-
-        private fun getInt(b1: Byte, b2: Byte, b3: Byte, b4: Byte) = b1.toInt() shl 24 or (b2.toInt() and 0xff shl 16) or (b3.toInt() and 0xff shl 8) or (b4.toInt() and 0xff)
+        private fun getInt(
+            b1: Byte,
+            b2: Byte,
+            b3: Byte,
+            b4: Byte,
+        ) = b1.toInt() shl 24 or (b2.toInt() and 0xff shl 16) or (b3.toInt() and 0xff shl 8) or (b4.toInt() and 0xff)
 
         private const val SEPARATOR = 255
         private const val HEADER = 4

@@ -23,10 +23,10 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.displee:rs-cache-library:6.7")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
-    implementation("io.ktor:ktor-server-core:1.5.0")
+    implementation("io.ktor:ktor-server-core:2.3.0")
     implementation("io.ktor:ktor-network:1.5.0")
 
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("ch.qos.logback:logback-classic:1.4.12")
     implementation("com.michael-bull.kotlin-inline-logger:kotlin-inline-logger-jvm:1.0.2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
@@ -37,10 +37,14 @@ dependencies {
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
+    }
+    withType<JavaCompile> {
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
     }
 }
 
@@ -55,7 +59,10 @@ tasks.withType<Jar> {
 
     dependsOn(configurations.runtimeClasspath)
     from({
-        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+        configurations.runtimeClasspath
+            .get()
+            .filter { it.name.endsWith("jar") }
+            .map { zipTree(it) }
     })
 }
 
