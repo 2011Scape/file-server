@@ -1,6 +1,5 @@
 <p align="center">
-  <img src="https://github.com/2011Scape/installation-guide/assets/75695035/6b99c832-6d62-4811-bdda-143d72c13c7a" />
-  <br>
+  <h1>2011Scape</h1>  <br>
   <br>
   <br>
   <img src="https://github.com/2011Scape/file-server/assets/75695035/29ae3b3b-2ecb-4608-84b4-c7aa6f762352" />
